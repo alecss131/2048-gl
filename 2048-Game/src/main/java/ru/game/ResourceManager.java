@@ -15,6 +15,7 @@ public class ResourceManager {
 	private static BufferedImage icon;
 	private static BufferedImage win;
 	private static BufferedImage loose;
+	private static BufferedImage numbers;
 	private static int width;
 	private static int height;
 	private static int numSize = 100;
@@ -35,7 +36,6 @@ public class ResourceManager {
 			new Color(237, 197, 50, 255)};
 	private static int fontSize[] = {0, 50, 50, 50, 50, 50, 50, 45, 45, 45, 35, 35, 35, 30};
 	private static Color fontcolors[] = {new Color(120, 110, 101, 255), new Color(249, 246, 242, 255)};
-	private static BufferedImage out;
 	
 	public static void init() {
 		init(4, 4, 8192);
@@ -58,6 +58,7 @@ public class ResourceManager {
 		createBackGround();
 		createIcon();
 		createwinloose();
+		createNumbers();
 	}
 	
 	
@@ -87,6 +88,10 @@ public class ResourceManager {
 	
 	public static BufferedImage[] getNumberImages() {
 		return images;
+	}
+	
+	public static BufferedImage getNumbers() {
+		return numbers;
 	}
 	
 	private static void createNubersImages() {
@@ -124,7 +129,7 @@ public class ResourceManager {
 	}
 	
 	public static BufferedImage createImage(int w, int h, boolean type) {
-		out = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+		BufferedImage out = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2d = (Graphics2D) out.getGraphics();
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2d.setColor(new Color(255, 255, 255, 0));
@@ -137,6 +142,21 @@ public class ResourceManager {
 			g2d.fillRoundRect(0, 0, w, h, 5, 5);
 		}
 		return out;
+	}
+	
+	private static void createNumbers() {
+		int w = 11;
+		int h = 180;
+		numbers = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D g2d = (Graphics2D) numbers.getGraphics();
+		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g2d.setColor(new Color(0, 0, 0, 0));
+		g2d.fillRect(0, 0, w, h);
+		g2d.setColor(new Color(255, 255, 255, 255));
+		g2d.setFont(new Font("Arial", Font.BOLD, 20));
+		for (int i = 0; i < 10; i++) {
+			g2d.drawString(i + "", 0, (i + 1) * 18);
+		}
 	}
 	
 	private static void createwinloose() {
@@ -216,11 +236,11 @@ public class ResourceManager {
 		g2d.drawString("BEST", 355+(100-w)/2, 35);
 		w = g2d.getFontMetrics().stringWidth("SCORE");
 		g2d.drawString("SCORE", 250+(100-w)/2, 35);
-		g2d.setFont(new Font("Arial", Font.BOLD, 20));
+		/*g2d.setFont(new Font("Arial", Font.BOLD, 20));
 		w = g2d.getFontMetrics().stringWidth("0");
 		g2d.drawString("0", 355+(100-w)/2, 60);
 		w = g2d.getFontMetrics().stringWidth("0");
-		g2d.drawString("0", 250+(100-w)/2, 60);
+		g2d.drawString("0", 250+(100-w)/2, 60);*/
 		g2d.setColor(new Color(144, 123, 102, 255));
 		g2d.fillRoundRect(320, 102, 100, 25, 5, 5); //new game
 		g2d.setFont(new Font("Arial", Font.BOLD, 15));

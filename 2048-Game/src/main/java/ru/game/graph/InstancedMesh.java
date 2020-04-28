@@ -26,6 +26,7 @@ public class InstancedMesh {
 	}
 	
 	public void updateData(int in[]) {
+		len = in.length;
 		glNamedBufferSubData(vbo, 4 * SIZE, in);
 	}
 	

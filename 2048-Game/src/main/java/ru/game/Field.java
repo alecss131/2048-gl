@@ -42,7 +42,7 @@ public class Field {
 			for (int j=1; j<4; j++) {
 				if (field[4*i+j-1]==field[4*i+j] && field[4*i+j] !=0) {
 					field[4*i+j-1] += 1;
-					score += field[4*i+j-1];
+					score += Math.pow(2, field[4*i+j-1]);
 					field[4*i+j] = 0;
 				}
 			}
@@ -72,7 +72,7 @@ public class Field {
 			for (int j=3; j>0; j--) {
 				if (field[4*i+j-1]==field[4*i+j] && field[4*i+j]!=0) {
 					field[4*i+j] += 1;
-					score += field[4*i+j];
+					score += Math.pow(2, field[4*i+j]);
 					field[4*i+j-1] = 0;
 				}
 			}
@@ -102,7 +102,7 @@ public class Field {
 			for (int j=1; j<4; j++) {
 				if (field[4*(j-1)+i]==field[4*j+i] && field[4*j+i]!=0) {
 					field[4*(j-1)+i] += 1;
-					score += field[4*(j-1)+i];
+					score += Math.pow(2, field[4*(j-1)+i]);
 					field[4*j+i] = 0;
 				}
 			}
@@ -132,7 +132,7 @@ public class Field {
 			for (int j=3; j>0; j--) {
 				if (field[4*(j-1)+i]==field[4*j+i] && field[4*j+i]!=0) {
 					field[4*j+i] += 1;
-					score += field[4*j+i];
+					score += Math.pow(2, field[4*j+i]);
 					field[4*(j-1)+i] = 0;
 				}
 			}
