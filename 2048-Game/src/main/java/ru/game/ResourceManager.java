@@ -236,11 +236,6 @@ public class ResourceManager {
 		g2d.drawString("BEST", 355+(100-w)/2, 35);
 		w = g2d.getFontMetrics().stringWidth("SCORE");
 		g2d.drawString("SCORE", 250+(100-w)/2, 35);
-		/*g2d.setFont(new Font("Arial", Font.BOLD, 20));
-		w = g2d.getFontMetrics().stringWidth("0");
-		g2d.drawString("0", 355+(100-w)/2, 60);
-		w = g2d.getFontMetrics().stringWidth("0");
-		g2d.drawString("0", 250+(100-w)/2, 60);*/
 		g2d.setColor(new Color(144, 123, 102, 255));
 		g2d.fillRoundRect(320, 102, 100, 25, 5, 5); //new game
 		g2d.setFont(new Font("Arial", Font.BOLD, 15));

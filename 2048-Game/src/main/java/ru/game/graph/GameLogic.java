@@ -14,8 +14,9 @@ public class GameLogic {
 	private Lock lock = new Lock();
 	private Button btn1 = new Button();
 	private Button btn2 = new Button();
-	private Score score = new Score(375, 42, 11, 18);
-	private Score bscore = new Score(270, 42, 11, 18);
+	private Score score = new Score(270, 42, 11, 18);
+	private Score bscore = new Score(375, 42, 11, 18);
+	private int best = 0;
 	
 	public void init() {
 		field.init();
@@ -57,7 +58,13 @@ public class GameLogic {
 		}
 		render.render(btn1);
 		render.render(score, bscore);
-		if (btn1.result(true) && window.isMousePressed()) field.newGame();
+		if (btn1.result(true) && window.isMousePressed()) {
+			if ((field.isWin() || field.isGameOver()) && best < field.getScore()) {
+				best = field.getScore();
+				bscore.setScore(best);
+			}
+			field.newGame();
+		}
 		if (btn2.result(field.isWin()) && window.isMousePressed()) field.continueGame();
 	}
 	

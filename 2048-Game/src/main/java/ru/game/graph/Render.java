@@ -26,7 +26,6 @@ public class Render {
 	private SeparateShaderProgram fragment1 = new SeparateShaderProgram();
 	private PipeLine pipeline2;
 	private SeparateShaderProgram vertex2 = new SeparateShaderProgram();
-	private SeparateShaderProgram fragment2 = new SeparateShaderProgram();
 	private SeparateShaderProgram geometry2 = new SeparateShaderProgram();
 	private final Matrix4f proj;
 	
@@ -62,7 +61,7 @@ public class Render {
 		pipeline1.setVertexStage(vertex1.getId());
 		pipeline1.validate();
 		pipeline2 = new PipeLine();
-		pipeline2.setFragmentStage(fragment2.getId());
+		pipeline2.setFragmentStage(fragment1.getId());
 		pipeline2.setVertexStage(vertex2.getId());
 		pipeline2.setGeometryStage(geometry2.getId());
 		pipeline2.validate();
@@ -81,7 +80,6 @@ public class Render {
 		fragment1.cleanUp();
 		pipeline1.cleanUp();
 		vertex2.cleanUp();
-		fragment2.cleanUp();
 		geometry2.cleanUp();
 		pipeline2.cleanUp();
 	}
@@ -128,7 +126,6 @@ public class Render {
 			vertex1.createVertexShader(IOUtils.resourceToString("/assets/shaders/shader.vs", StandardCharsets.UTF_8));
 			fragment1.createFragmentShader(IOUtils.resourceToString("/assets/shaders/shader.fs", StandardCharsets.UTF_8));
 			vertex2.createVertexShader(IOUtils.resourceToString("/assets/shaders/number.vs", StandardCharsets.UTF_8));
-			fragment2.createFragmentShader(IOUtils.resourceToString("/assets/shaders/number.fs", StandardCharsets.UTF_8));
 			geometry2.createGeometryShader(IOUtils.resourceToString("/assets/shaders/number.gs", StandardCharsets.UTF_8));
 		} catch (IOException e) {
 			e.printStackTrace();
